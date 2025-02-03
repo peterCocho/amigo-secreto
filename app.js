@@ -9,7 +9,6 @@ function agregarAmigo() {
   let amigo = document.getElementById('amigo').value;
   if (amigo != "") {
     amigos.push(amigo);
-    console.log(amigos)
     limpiarCampo()
   } else {
     alert("Por favor, inserte un nombre.")
