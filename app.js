@@ -3,9 +3,9 @@
 // creando el arry amigos para almacenarlos
 let amigos = [];
 
-// Capturar el valor del campo de entrada: Utilizar document.getElementById o document.querySelector para obtener el texto ingresado por el usuario.
 
 function agregarAmigo() {
+// Capturar el valor del campo de entrada: Utilizar document.getElementById  para obtener el texto ingresado por el usuario.
 	let amigo = document.getElementById("amigo").value;
 	if (amigo != "") {
 		amigos.push(amigo);
@@ -20,24 +20,16 @@ function limpiarCampo() {
 	document.querySelector("#amigo").value = "";
 }
 
-// function mostrarLista() {
-//   let listaAmigos = document.getElementById("listaAmigos");
-//   listaAmigos.innerHTML = "";
-//   let amigoAgregado = document.createElement("li");
-// 	amigos.map(function (amigo) {
-
-// 		amigoAgregado.innerHTML = amigo;
-// 		listaAmigos.appendChild(amigoAgregado);
-// 	});
-// }
 
 function mostrarLista() {
   let listaAmigos = document.getElementById("listaAmigos");
-  listaAmigos.innerHTML = "";
+listaAmigos.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
 
-  amigos.map(function (amigo) {
-    let amigoAgregado = document.createElement("li");
-    amigoAgregado.innerHTML = amigo;
-    listaAmigos.appendChild(amigoAgregado);
-  });
+let contenido = amigos.map(function(amigo) {
+  return `<li>${amigo}</li>`;
+  // Para asegurar que los elementos de la lista se muestren correctamente, cada uno en una nueva línea sin separadores intermedios no deseados
+}).join("");
+
+listaAmigos.innerHTML = contenido;
+
 }
