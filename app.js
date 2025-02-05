@@ -5,25 +5,49 @@
 // creando el arry amigos para almacenarlos
 let amigos = [];
 
-function agregarAmigo() {
+function accederAlElemento(elemento) {
 	// Capturar el valor del campo de entrada: Utilizar document.getElementById  para obtener el texto ingresado por el usuario.
-	let amigo = document.getElementById("amigo").value;
-	if (amigo != "") {
-		amigos.push(amigo);
-		limpiarCampo();
-		mostrarLista();
+  let elementoHtml = document.getElementById(elemento);
+  return elementoHtml;
+}
+
+// accediendo a los elementos HTML
+let texto = accederAlElemento("amigo");
+let error = accederAlElemento("error");
+
+
+function agregarAmigo() {  
+
+  let amigo = texto.value;
+  texto.addEventListener("input", function (e) {
+    this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, ""); // Permite solo letras y espacios
+});
+  if (amigo != "") {
+    if (amigos.includes(amigo)) {
+      // agregando mensaje de error
+      error.innerHTML = "El nombre ya esta en la lista.";
+      limpiarCampo();
+    }
+    else {
+      error.innerHTML = ""; // Limpiar el mensaje de error si se produjo antes de agregar el nuevo amigo
+      amigos.push(amigo);
+      limpiarCampo();
+      mostrarLista();
+    }
 	} else {
-		alert("Por favor, inserte un nombre.");
+    // agregando mensaje de error
+		error.innerHTML = "Por favor, inserte un nombre.";
 	}
 }
 
+// dejar vacio el campo del input
 function limpiarCampo() {
-	document.querySelector("#amigo").value = "";
+  texto.value = "";
+	
 }
 
 function mostrarLista() {
 	let listaAmigos = document.getElementById("listaAmigos");
-	resultado.innerHTML = "";
 	listaAmigos.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
 
 	let contenido = amigos
@@ -37,17 +61,20 @@ function mostrarLista() {
 }
 
 function sortearAmigo() {
-  let resultado = document.getElementById("resultado");
-  let boton1 = document.getElementById("boton1");
-  let boton2 = document.getElementById("boton2");
+  let resultado = accederAlElemento("resultado");
+  let insert = accederAlElemento("insert");
+  let boton2 = accederAlElemento("boton2");
+  let subTitulo = accederAlElemento("subTitulo");
 
+  limpiarCampo();
 	if (amigos.length > 0) {
 		listaAmigos.innerHTML = "";
-		let amigoGenerado = Math.floor(Math.random() * amigos.length);
+    let amigoGenerado = Math.floor(Math.random() * amigos.length);
+    error.innerHTML = "";
     resultado.innerHTML = `<li> El amigo secreto sorteado es: ${amigos[amigoGenerado]}</li>`;
-    boton1.setAttribute('disabled', 'true');
-    boton2.setAttribute('disabled', 'true');
-    
+    insert.style.display = 'none';
+    boton2.style.display = 'none';
+    subTitulo.style.display = 'none';
 	} else {
 	}
 }
