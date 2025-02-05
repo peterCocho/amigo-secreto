@@ -40,7 +40,7 @@ A continuación, una vista previa de la aplicación:
 
 ## 🔗 Acceso al Proyecto  
 Puedes acceder al proyecto desde el siguiente enlace:  
-🔗 [Repositorio en GitHub](https://github.com/petercocho/amigo-secreto)  
+🔗 [Repositorio en GitHub](https://petercocho.github.io/amigo-secreto/)  
 
 Para ejecutarlo localmente:  
 1. Clona este repositorio:  
