@@ -67,7 +67,7 @@ function sortearAmigo() {
   let subTitulo = accederAlElemento("subTitulo");
 
   limpiarCampo();
-	if (amigos.length > 0) {
+	if (amigos.length > 1) {
 		listaAmigos.innerHTML = "";
     let amigoGenerado = Math.floor(Math.random() * amigos.length);
     error.innerHTML = "";
