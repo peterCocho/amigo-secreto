@@ -75,7 +75,7 @@ function sortearAmigo() {
     insert.style.display = 'none';
     boton2.style.display = 'none';
     subTitulo.innerHTML = 'Fin del juego';
-    console.log(subTitulo)
+
 	} else {
 	}
 }
