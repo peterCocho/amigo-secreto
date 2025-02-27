@@ -74,7 +74,8 @@ function sortearAmigo() {
     resultado.innerHTML = `<li> El amigo secreto sorteado es: ${amigos[amigoGenerado]}</li>`;
     insert.style.display = 'none';
     boton2.style.display = 'none';
-    subTitulo.style.display = 'none';
+    subTitulo.innerHTML = 'Fin del juego';
+    console.log(subTitulo)
 	} else {
 	}
 }
